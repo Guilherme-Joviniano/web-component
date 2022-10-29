@@ -12,20 +12,54 @@ customElements.define('artist-detail',
         }
 
         initDefaultValues() {
+            this._data = 0
+            this._topSongs = 0
+            this._allSongs = 0
+            
             this.name = ''
-            this.image = ''
-            this.topSongs = ['teste', 'teste']
-            this.allSongs = []
+            this.image = '' 
             this.genres = []
         }
         connectedCallback() {
-            this.topSongs = JSON.parse(this.attributes.topSongs.value);
+            this.topSongs = this.data[0].item
+            this.allSongs = this.data[1].item
             this.shadow.appendChild(this.component())
             this.shadow.appendChild(this.styles())
         }
+        
+        set allSongs(newValue) {
+            let data = [];
+            newValue.forEach(({ desc }) => {
+                data.push(desc)
+            });
+            this._allSongs = data;
+        }
+
+        set topSongs(newValue) {
+            let data = [];
+            newValue.slice(0,6).forEach(({ desc }) => {
+                data.push(desc)
+            });
+            this._topSongs = data;
+        }
+
+        get topSongs() {
+            return this._topSongs
+        }
+        get allSongs() {
+            return this._allSongs
+        }
 
         static get observedAttributes() {
-            return ['name', 'art-image', 'views', 'top-songs', 'all-songs', 'genre']
+            return ['name', 'art-image', 'views', 'genre', 'data']
+        }
+
+        get data() {
+            return this._data
+        }
+
+        set data(newValue) {
+            this._data = newValue
         }
 
         attributeChangedCallback(nameAttr, _oldValue, newValue) {
@@ -34,20 +68,48 @@ customElements.define('artist-detail',
             else if (nameAttr === 'views') this.views = newValue
             else if (nameAttr === 'genres') this.genres = newValue
         }
-
+        
         styles() {
             const style = document.createElement('style')
             style.textContent = `
+            @keyframes show {
+                0% {
+                    transform: translateY(-100px)
+                }
+                100% {
+                    transform: translateY(0px)
+                }
+            }
+            
+                /* width */
+                ::-webkit-scrollbar {
+                    width: 10px;
+                }
+                
+                /* Track */
+                ::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+                
+                /* Handle */
+                ::-webkit-scrollbar-thumb {
+                    background: #db00ff;
+                }
+                
+                /* Handle on hover */
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #470152;
+                }
+                
                 .artist__detail {
+                    animation: show     ;
+                    padding: 10px;
+                    border-radius: 12px;
                     display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    height: 100%;
+                    width: 100%;    
                     background: #313030;
                 }
                 .details {
-                    width: 1200px;
-                    height: 400px;
                     display: flex;
                     flex-direction: column;
                 }
@@ -56,6 +118,7 @@ customElements.define('artist-detail',
                     height: 100px;
                     border-radius: 50%;
                     background: url(${this.image});
+                    background-size: cover;
                     border: 2px solid #DB00FF;
                 }
                 .name {
@@ -69,21 +132,37 @@ customElements.define('artist-detail',
                 }
                 .lyrics {
                     display: flex;
-                    align-items: center;
+                    align-items:    ;
+                }
+                .allSongs {
+                    max-height: 400px;
+                    overflow-y: scroll;
                 }
                 ul {
                     list-style: none;
                 }
                 .song {
-                    font-weight: 700;
+                    padding-left: 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    color: #FFF;
+                    width: 300px;
+                    height: 40px;
+                    display:flex;
+                    gap: 20px;
+                    align-items: center;
+                    font-weight: 400;
                     font-size: 16px;
+                    transition: 400ms all ease;
+                }
+                .song:hover {
+                    background: hsla(0,0%,100%,.3)
                 }
             `
             return style
         }
         component() {
             const component = document.createElement('div')
-            console.log(this.topSongs);
             component.innerHTML = `
             <div class="artist__detail">
                 <div class="details">
@@ -94,10 +173,12 @@ customElements.define('artist-detail',
                 </div>
                 <div class="lyrics">
                     <ul class="topSongs">
-                        <li>${this.topSongs.join('</li><li>')}</li>
+                        <li class="song">
+                        &#9658 ${this.topSongs.join('</li> <li class="song">&#9658 ')}</li>
                     </ul>
                     <ul class="allSongs">
-                        <li>${this.allSongs.join('</li><li>')}</li>
+                        <li class="song">
+                        &#9658 ${this.allSongs.join('</li><li class="song">&#9658 ')}</li>
                     </ul>    
                 </div>
             </div>
