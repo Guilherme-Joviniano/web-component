@@ -123,7 +123,7 @@ customElements.define(
                     border-radius: 12px;
                     display: flex;
                     width: 100%;    
-                    background: #313030;
+                    background: #181818;
                 }
                 .details {
                     display: flex;
