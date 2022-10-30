@@ -5,10 +5,15 @@ import {
     singer
 } from "./helpers/fetch.js"
 
-const lyricMain = async () => {
+const SONG_NAME = localStorage.getItem('songName')
+const SINGER_NAME = localStorage.getItem('singer')
+
+console.log(SONG_NAME, SINGER_NAME);
+
+const lyricMain = async (songName, singerName) => {
     const container = document.querySelector('.lyrics')
 
-    const song = await lyric('skank', 'vamos fugir')
+    const song = await lyric(singerName, songName)
     const songArt = song.art
     const songLyric = song.mus[0]
 
@@ -32,7 +37,7 @@ const lyricMain = async () => {
     ranking(songArt.name)
 }
 
-lyricMain()
+lyricMain(SONG_NAME, SINGER_NAME)
 
 const translate = () => {
     const translateContainer = document.querySelector('.translate')

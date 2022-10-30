@@ -1,6 +1,7 @@
 export default async (name) => {
-    name = name.replace(` `, `-`).toLowerCase()
-    const response = await fetch(`https://www.vagalume.com.br/${name}/index.js`);
+    const artName = name.replaceAll(` `, `-`).toLowerCase()
+    console.log(artName);
+    const response = await fetch(`https://www.vagalume.com.br/${artName}/index.js`);
     const json = await response.json();
     return json;
 }

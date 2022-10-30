@@ -4,10 +4,11 @@ import '../../components/artistDetail/index.js'
 import popularArtists from '../../helpers/fetchPopularArtists.js'
 import artFetch from '../../helpers/artFetch.js';
 import removeAllChilds from '../../helpers/removeAllChilds.js';
+import globalConfigs from '../../config/global.js'
 
+const { BASE_URL } = globalConfigs
 const CARDS_CONTAINER = document.querySelector('.ranking-cards');
 const SEARCH_INPUT = document.querySelector('.search-input')
-const BASE_URL = 'https://www.vagalume.com.br'
 
 
 const generatePopularArtistRanking = async () => {
@@ -64,9 +65,12 @@ SEARCH_INPUT.addEventListener('keypress', async ({
         removeAllChilds(CARDS_CONTAINER) 
 
         CARDS_CONTAINER.appendChild(detail)
+
+        localStorage.setItem('singer', value.replaceAll(` `, `-`).toLowerCase())
     }
 })
 
-const card = await generatePopularArtistRanking()
+// const card = await generatePopularArtistRanking()
+// CARDS_CONTAINER.append(...card)
 
-CARDS_CONTAINER.append(...card)
+
