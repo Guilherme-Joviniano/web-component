@@ -10,10 +10,7 @@ import getRandomItem from "../../helpers/getRandomItem.js";
 const { BASE_URL } = globalConfigs;
 const CARDS_CONTAINER = document.querySelector(".ranking-cards");
 const SEARCH_INPUT = document.querySelector(".search-input");
-const COLORS = [
-    '#663399',
-    '#9370DB',
-]
+const COLORS = ["#663399", "#9370DB"];
 const generatePopularArtistRanking = async () => {
   const data = await popularArtists();
   let cards = [];
@@ -63,15 +60,18 @@ SEARCH_INPUT.addEventListener("keypress", async ({ target, key }) => {
       flexDiv.removeChild(flexDiv?.children[0]);
     }
 
-    document.querySelector('#ranking').classList.add('animated-gradient')
-    document.querySelector('#ranking').style.background = `linear-gradient(180deg, ${getRandomItem(COLORS)} 0%,rgba(18,18,18, 1) 71%)`
-
+    document.querySelector("#ranking").classList.add("animated-gradient");
+    document.querySelector(
+      "#ranking"
+    ).style.background = `linear-gradient(180deg, ${getRandomItem(
+      COLORS
+    )} 0%,rgba(18,18,18, 1) 71%)`;
 
     CARDS_CONTAINER.appendChild(detail);
 
     document
       .querySelector("artist-detail")
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({ behavior: "smooth", block: "center" });
 
     localStorage.setItem("singer", value.replaceAll(` `, `-`).toLowerCase());
   }
