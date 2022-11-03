@@ -156,3 +156,11 @@ input[type=radio]:checked+label>.flag {
     background-color: var(--accent-color);
     color: #fff;
 }
+
+.music-frame {
+    position: absolute;
+    top: 30%;
+    width: 500px;
+    height: 300px;
+    background: red;
+}
