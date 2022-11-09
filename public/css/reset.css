@@ -180,6 +180,12 @@ main {
   background: #470152;
 }
 
+
+.purple-text {
+    font-weight: bolder;
+    color: var(--accent-color);
+}
+
 html {
   scroll-behavior: smooth;
 }

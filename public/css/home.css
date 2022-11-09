@@ -58,10 +58,6 @@ section {
     color: #BABABA;
 }
 
-.purple-text {
-    font-weight: bolder;
-    color: var(--accent-color);
-}
 
 .search-bar span {
     text-align: center;
