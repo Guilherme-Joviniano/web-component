@@ -11,6 +11,7 @@ const { BASE_URL } = globalConfigs;
 const CARDS_CONTAINER = document.querySelector(".ranking-cards");
 const SEARCH_INPUT = document.querySelector(".search-input");
 const COLORS = ["#663399", "#9370DB"];
+
 const generatePopularArtistRanking = async () => {
   const data = await popularArtists();
   let cards = [];
@@ -61,6 +62,7 @@ SEARCH_INPUT.addEventListener("keypress", async ({ target, key }) => {
     }
 
     document.querySelector("#ranking").classList.add("animated-gradient");
+    console.log(getRandomItem(COLORS));
     document.querySelector(
       "#ranking"
     ).style.background = `linear-gradient(180deg, ${getRandomItem(

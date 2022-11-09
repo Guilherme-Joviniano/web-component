@@ -29,17 +29,17 @@ customElements.define(
       this.shadow.appendChild(this.styles());
 
       this.shadowRoot.querySelectorAll(".song").forEach((song) => {
-        song.addEventListener("click", () => {
-          if (!song.childNodes[2]) {
-            localStorage.setItem("songName", song.childNodes[1].textContent);
-            location.href = "/lyric.html";
-            return;
-          }
-          localStorage.setItem("songName", song.childNodes[2].textContent);
+          song.addEventListener("click", () => {
+            if (!song.childNodes[2]) {
+              localStorage.setItem("songName", song.childNodes[1].textContent);
+              location.href = "/web-component/lyric.html";
+              return;
+            }
+            localStorage.setItem("songName", song.childNodes[2].textContent);
 
-          location.href = "/lyric.html";
-          return;
-        });
+            location.href = "/web-component/lyric.html";
+            return;
+          });
       });
     }
 

@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./public/css/reset.css">
     <link rel="stylesheet" href="./public/css/home.css">
     <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="./public/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="./src/template/Home/index.js" type="module" defer></script>
-
     <script src="https://kit.fontawesome.com/cb13db9242.js" crossorigin="anonymous"></script>
     <title>Musics.com</title>
 </head>
@@ -21,21 +21,21 @@
     <div class="root">
         <header>
             <div class="logos">
-              <img src="#" alt=""> 
+              <img src="./public/imgs/borboleta.svg" alt=""> 
             </div>
 
             <div class="navBar">
                 <ul>
                     <li>
-                        <span>Home</span>
+                        <a href="#hero">Home</a>
                     </li>
                     <li>
-                        <span>Toplist</span>
+                        <a href="#ranking">Toplist</a>
                     </li>         
                 </ul>
-                <div class="targetBox">
+                <a class="targetBox" href="#search">
                     <span>Escute Agora</span>
-                </div>
+            </a>
             </div>
 
         </header>
@@ -47,7 +47,7 @@
                         <p>Integer nec scelerisque eros. Pellentesque eget enim sit amet felis euismod aliquam. Integer
                             elementum condimentum luctus. Duis finibus tellus tempus.</p>
                     </div>
-                    <div class="search-bar">
+                    <div class="search-bar" id="search">
                         <span class="purple-text">Pesquise</span>
                         <input type="text" name="search-input" class="search-input">
                     </div>
@@ -56,7 +56,7 @@
             </section>
             <section id="ranking">
                 <div class="flex-column-center">
-                    <h2>Vagalume Rank   ing</h2>
+                    <h2>Vagalume Ranking</h2>
                     <p>As informações de ranking no Vagalume são constantemente atualizadas e
                         representam a tendência musical conforme milhões de acessos diários a páginas de letras,
                         artistas, álbuns dentre outros.</p>
@@ -65,6 +65,16 @@
                 </div>
             </section>
         </main>
+        <footer>
+            <div class="logos">
+                <img src="./public/imgs/borboleta.svg" alt="icone fone de ouvido" >
+                <span class="listenTxt">Listen<span class='purple-text'>Me</span></span>
+            </div>
+            <div class="copyright">
+                <span>Copyright © 2022 | Todos os direitos reservados</span>
+            </div>
+            <img src="./public/imgs/vagalume.png" alt="" class="vagalumeIMG">
+        </footer>
     </div>
 </body>
 

@@ -5,6 +5,11 @@ header{
 
 }
 
+.logos img{
+    height:60px;
+    width:60px;
+}
+
 .navBar{
     display: flex;
     justify-content: center;
@@ -12,9 +17,14 @@ header{
     font-size: 24px;
     font-family: 'Mulish', sans-serif;
     padding-right: 81px;
-    display: flex;
-
 }
+
+
+.navBar a{
+    text-decoration:none;
+    color:white;
+}
+
 
 .navBar ul{
     color: var(--accent-color);

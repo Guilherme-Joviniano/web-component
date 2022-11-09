@@ -1,0 +1,41 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer span{
+    font-family: 'Mulish', sans-serif;
+}
+
+
+.logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listenTxt{
+    color: white;
+    font-size:30px;
+}
+
+.copyright{
+    color: white;
+}
+
+.logos{
+    padding-left:80px;
+}
+
+.logos img{
+    height:60px;
+    width:60px;
+    padding-right:10px;
+}
+
+.vagalumeIMG{
+    height:60px;
+    width:60px;
+    margin-right:80px;
+}
