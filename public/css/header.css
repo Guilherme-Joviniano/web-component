@@ -1,0 +1,39 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: 'Mulish', sans-serif;
+    padding-right: 81px;
+    display: flex;
+
+}
+
+.navBar ul{
+    color: var(--accent-color);
+    display: flex;
+    gap: 80px;
+    padding-right: 80px;
+}
+
+.targetBox{
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--accent-color);
+    width: 200.82px;
+    height: 62.8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.targetBox span{
+    color: white;
+}
