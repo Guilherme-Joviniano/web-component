@@ -32,15 +32,13 @@ const lyricMain = async (songName, singerName) => {
             <h2 class="artist">${songArt.name}</h2>
         </span>
         <p class="music">${songLyric.text}</p>
-        <a href="${songArt.url}" target="_blank">
+        <a class="about-link" href="${songArt.url}" target="_blank">
             <button class="about">Mais sobre ${songArt.name}</button>
         </a> 
     `;
 
-  if (songLyric.translate) {
-    document.querySelector(".options").style.justifyContent = "space-evenly";
+  if (songLyric.translate)
     translate();
-  } else document.querySelector(".options").style.justifyContent = "center";
 
   ranking(songArt.name);
 };
@@ -52,7 +50,7 @@ const translate = () => {
   translateContainer.innerHTML = `
         <h2 class="option-title">Traduzir Letra</h2>
         <div class="input-container">
-            <input type="radio" name="translate" id="english" class="hidden">
+            <input type="radio" name="translate" id="english" class="hidden" checked>
             <label for="english" class="input-text">
                 <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/05/bandeira-estados-unidos.jpg" alt="bandeira dos estados unidos" class="flag">
                 ORIGINAL
@@ -90,12 +88,12 @@ const topLyrics = (item, index) => {
 };
 
 const english = async () => {
-  const song = await lyric("madonna", "holliday");
+  const song = await lyric(SINGER_NAME, SONG_NAME);
   const songLyric = song.mus[0];
   document.querySelector(".music").textContent = songLyric.text;
 };
 const portuguese = async () => {
-  const song = await lyric("madonna", "holliday");
+  const song = await lyric(SINGER_NAME, SONG_NAME);
   const songLyric = song.mus[0].translate[0].text;
 
   document.querySelector(".music").textContent = songLyric;
