@@ -95,6 +95,5 @@ const english = async () => {
 const portuguese = async () => {
   const song = await lyric(SINGER_NAME, SONG_NAME);
   const songLyric = song.mus[0].translate[0].text;
-
   document.querySelector(".music").textContent = songLyric;
 };
