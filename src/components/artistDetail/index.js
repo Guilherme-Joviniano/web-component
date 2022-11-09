@@ -29,17 +29,17 @@ customElements.define(
       this.shadow.appendChild(this.styles());
 
       this.shadowRoot.querySelectorAll(".song").forEach((song) => {
-          song.addEventListener("click", () => {
-            if (!song.childNodes[2]) {
-              localStorage.setItem("songName", song.childNodes[1].textContent);
-              location.href = "/web-component/lyric.html";
-              return;
-            }
-            localStorage.setItem("songName", song.childNodes[2].textContent);
-
+        song.addEventListener("click", () => {
+          if (!song.childNodes[2]) {
+            localStorage.setItem("songName", song.childNodes[1].textContent);
             location.href = "/web-component/lyric.html";
             return;
-          });
+          }
+          localStorage.setItem("songName", song.childNodes[2].textContent);
+
+          location.href = "/web-component/lyric.html";
+          return;
+        });
       });
     }
 
@@ -122,10 +122,11 @@ customElements.define(
                     padding: 10px;
                     border-radius: 12px;
                     display: flex;
-                    width: 100%;    
-                    background: #181818;
+                    width: 100%;
+                    background: #181818;                    
                 }
                 .details {
+                    background: none;
                     display: flex;
                     flex-direction: column;
                 }
@@ -148,7 +149,7 @@ customElements.define(
                 }
                 .lyrics {
                     display: flex;
-                    align-items:    ;
+                    align-items: center ;
                 }
                 .allSongs {
                     max-height: 400px;
@@ -173,6 +174,22 @@ customElements.define(
                 }
                 .song:hover {
                     background: hsla(0,0%,100%,.3)
+                }
+
+                @media (max-width: 600px) {
+
+                  ::-webkit-scrollbar {
+                    width: 5px;
+                  }
+                  .artist__detail {
+                    padding: 10px;
+                    margin-right: 20px;
+                    width: 80vw;
+                    flex-direction: column;
+                  }
+                  .lyrics {
+                    flex-direction: column;
+                  }
                 }
             `;
       return style;

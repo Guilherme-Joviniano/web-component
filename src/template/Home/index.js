@@ -52,24 +52,11 @@ SEARCH_INPUT.addEventListener("keypress", async ({ target, key }) => {
 
     const detail = await generateArtistDetail(value);
 
-    removeAllChilds(CARDS_CONTAINER);
+    const section = document.querySelector('#hero') 
+    
+    if(section.children.length > 1) section.removeChild(section.children[1]);
 
-    const flexDiv = document.querySelector(".flex-column-center");
-
-    if (flexDiv.children.length > 1) {
-      flexDiv.removeChild(flexDiv?.children[0]);
-      flexDiv.removeChild(flexDiv?.children[0]);
-    }
-
-    document.querySelector("#ranking").classList.add("animated-gradient");
-    console.log(getRandomItem(COLORS));
-    document.querySelector(
-      "#ranking"
-    ).style.background = `linear-gradient(180deg, ${getRandomItem(
-      COLORS
-    )} 0%,rgba(18,18,18, 1) 71%)`;
-
-    CARDS_CONTAINER.appendChild(detail);
+    section.appendChild(detail);
 
     document
       .querySelector("artist-detail")

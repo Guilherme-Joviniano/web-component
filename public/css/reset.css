@@ -189,3 +189,11 @@ main {
 html {
   scroll-behavior: smooth;
 }
+
+@media (max-width: 600px) {
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+}

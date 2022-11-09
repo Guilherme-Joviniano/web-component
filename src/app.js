@@ -11,15 +11,16 @@ const MUSIC_PLAYER = await musicFetch(SONG_NAME);
 console.log(SONG_NAME, SINGER_NAME);
 
 const addMusicPlayer = (musicID) => {
-    const container = document.querySelector('.music-frame')
-    
-    container.innerHTML = `
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${musicID}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-}
+  const container = document.querySelector(".music-frame");
 
-addMusicPlayer(MUSIC_PLAYER.id)
+  container.innerHTML = `
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${musicID}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+};
+
+addMusicPlayer(MUSIC_PLAYER.id);
 
 const lyricMain = async (songName, singerName) => {
+  console.log(songName, singerName);
   const container = document.querySelector(".lyrics");
 
   const song = await lyric(singerName, songName);
@@ -37,13 +38,19 @@ const lyricMain = async (songName, singerName) => {
         </a> 
     `;
 
-  if (songLyric.translate)
-    translate();
+  if (songLyric.translate) translate();
+
+  if (matchMedia("(max-width: 768px)").matches) {
+    document.querySelectorAll(".input-text").forEach((item) => {
+      let text = item.children[1];
+      text.textContent = "";
+    });
+  }
 
   ranking(songArt.name);
 };
-
-lyricMain(SONG_NAME, SINGER_NAME);
+lyricMain("holiday", "madonna");
+// lyricMain(SONG_NAME, SINGER_NAME);
 
 const translate = () => {
   const translateContainer = document.querySelector(".translate");
@@ -53,12 +60,12 @@ const translate = () => {
             <input type="radio" name="translate" id="english" class="hidden" checked>
             <label for="english" class="input-text">
                 <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/05/bandeira-estados-unidos.jpg" alt="bandeira dos estados unidos" class="flag">
-                ORIGINAL
+                <h3>ORIGINAL</h3>
             </label>
             <input type="radio" name="translate" id="portuguese" class="hidden">
             <label for="portuguese" class="input-text">
                 <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="bandeira do brasil" class="flag">
-                TRADUÇÃO
+                <h3>TRADUÇÃO</h3>
             </label>
         </div>
     `;

@@ -40,3 +40,22 @@ footer span{
     margin-right:80px;
 }
 
+@media (max-width: 768px) {
+    footer{
+        flex-direction:column;
+        align-items:center;
+        height:300px;
+
+    }
+
+    .logos{
+        margin-top:30px;
+        padding-left:0px;
+    }
+
+    .vagalumeIMG{
+        margin-right:0px;
+        margin-bottom:30px;
+    }
+
+}
