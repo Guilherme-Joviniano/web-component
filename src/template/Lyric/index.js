@@ -1,14 +1,12 @@
 "use strict";
 
-import { lyric, singer } from "./helpers/fetch.js";
+import { lyric, singer } from "../../helpers/fetch.js";
 
-import musicFetch from "./helpers/musicFetch.js";
+import musicFetch from "../../helpers/musicFetch.js";
 
 const SONG_NAME = localStorage.getItem("songName");
 const SINGER_NAME = localStorage.getItem("singer");
 const MUSIC_PLAYER = await musicFetch(SONG_NAME);
-
-console.log(SONG_NAME, SINGER_NAME);
 
 const addMusicPlayer = (musicID) => {
   const container = document.querySelector(".music-frame");
@@ -49,8 +47,6 @@ const lyricMain = async (songName, singerName) => {
 
   ranking(songArt.name);
 };
-lyricMain("holiday", "madonna");
-// lyricMain(SONG_NAME, SINGER_NAME);
 
 const translate = () => {
   const translateContainer = document.querySelector(".translate");
@@ -104,3 +100,7 @@ const portuguese = async () => {
   const songLyric = song.mus[0].translate[0].text;
   document.querySelector(".music").textContent = songLyric;
 };
+
+// Run the lyric main
+
+lyricMain(SONG_NAME, SINGER_NAME);
